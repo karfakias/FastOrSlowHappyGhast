@@ -1,19 +1,43 @@
-> If this project helped you, please consider leaving some stars [on the Github](https://github.com/Derec-Mods)!
+# Faster Happy Ghast
 
-# Faster Happy Ghasts
+Faster Happy Ghast is a server-side Fabric mod for Minecraft 26.2 that lets you configure Happy Ghast speed by state.
 
-This configurable plugin makes Happy Ghast faster (or slower!), simpler, and fully configurable, perfect for players and server owners who want an easy-to-tweak, more efficient version of the new mob! The current happy ghast speed feels way too slow
+Untamed/unharnessed Happy Ghasts keep the vanilla flying speed. Harnessed Happy Ghasts use one configurable speed while idle and another configurable speed while ridden.
 
-Check out my demo video here of how it works
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VCFnVvUBVTc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+## Build
 
-Created for use on my [University Minecraft world (derex smp)](https://derec4.github.io/derexsmp/notbanlist) + randos. Check it out in action, server ip: `mc.longhorns.dev`_
+```sh
+./gradlew build
+```
 
-## Join our dev discord!  
-![Discord](https://i.imgur.com/u3V5mdF.png)
-[https://discord.gg/HM5XEe6pW6](https://discord.gg/HM5XEe6pW6)
+The built mod jar is created in `build/libs/`.
 
+## Config
 
-## ❤️ Credits:
-Created for the UT Austin Minecraft server, developed by Derex... or derex_, derec4, derexXD, dereXD, derexwq, DereC_, CORRUPT_Greninja, lordnexus123, or whatever iteration of my username we are on at this point.
+On first launch, the mod creates:
 
+```text
+config/fasterhappyghast.properties
+```
+
+Default values:
+
+```properties
+tamed-idle-speed=0.05
+ridden-speed=0.17
+```
+
+`tamed-idle-speed` controls harnessed Happy Ghasts with no passengers. `ridden-speed` controls harnessed Happy Ghasts with passengers.
+
+## Commands
+
+All commands require permission level 2.
+
+```text
+/happyghast
+/happyghast help
+/happyghast get
+/happyghast reload
+/happyghast set tamed-idle-speed <speed>
+/happyghast set ridden-speed <speed>
+```

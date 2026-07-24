@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "fasterhappyghast",
+  "version": "${version}",
+  "name": "Faster Happy Ghast",
+  "description": "Makes tamed Happy Ghast speed configurable for idle and ridden states.",
+  "authors": [
+    "DerexXD"
+  ],
+  "contact": {
+    "homepage": "https://derec4.github.io/derexsmp/",
+    "issues": "https://github.com/Derec-Mods/FasterHappyGhast/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.derec4.fasterhappyghast.FasterHappyGhast"
+    ]
+  },
+  "mixins": [
+    "fasterhappyghast.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=21"
+  }
+}

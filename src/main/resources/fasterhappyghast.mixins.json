@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "io.github.derec4.fasterhappyghast.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CommandsMixin",
+    "HappyGhastEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
