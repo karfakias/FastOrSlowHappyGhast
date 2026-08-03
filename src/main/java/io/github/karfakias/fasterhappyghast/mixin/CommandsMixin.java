@@ -1,7 +1,7 @@
-package io.github.derec4.fasterhappyghast.mixin;
+package io.github.karfakias.fasterhappyghast.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.derec4.fasterhappyghast.ModCommands;
+import io.github.karfakias.fasterhappyghast.ModCommands;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

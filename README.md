@@ -1,8 +1,9 @@
-# Faster Happy Ghast
+# Fast or Slow Happy Ghast
 
-Faster Happy Ghast is a server-side Fabric mod for Minecraft 26.2 that lets you configure Happy Ghast speed by state.
+Fast or Slow Happy Ghast is a server-side Fabric mod for Minecraft 26.2.
 
-Untamed/unharnessed Happy Ghasts keep the vanilla flying speed. Harnessed Happy Ghasts use one configurable speed while idle and another configurable speed while ridden.
+It changes the speed of harnessed Happy Ghasts only.
+Wild or unharnessed ones stay at the vanilla speed. Harnessed ones can have one speed while idle and another while being ridden.
 
 ## Build
 
@@ -14,7 +15,7 @@ The built mod jar is created in `build/libs/`.
 
 ## Config
 
-On first launch, the mod creates:
+On first launch the mod creates:
 
 ```text
 config/fasterhappyghast.properties
@@ -27,7 +28,8 @@ tamed-idle-speed=0.05
 ridden-speed=0.17
 ```
 
-`tamed-idle-speed` controls harnessed Happy Ghasts with no passengers. `ridden-speed` controls harnessed Happy Ghasts with passengers.
+`tamed-idle-speed` is for a harnessed Happy Ghast with no passengers.
+`ridden-speed` is for one that is being ridden.
 
 ## Commands
 

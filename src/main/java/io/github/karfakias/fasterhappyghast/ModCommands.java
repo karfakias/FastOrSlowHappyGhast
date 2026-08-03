@@ -1,7 +1,7 @@
-package io.github.derec4.fasterhappyghast;
+package io.github.karfakias.fasterhappyghast;
 
-import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -40,7 +40,7 @@ public final class ModCommands {
     }
 
     private static int sendHelp(CommandSourceStack source) {
-        ModConfig config = FasterHappyGhast.getConfig();
+        ModConfig config = FastOrSlowHappyGhast.getConfig();
         source.sendSuccess(() -> header()
                 .append(Component.literal("\nCurrent speeds").withStyle(ChatFormatting.GRAY))
                 .append(speedLine(ModConfig.TAMED_IDLE_SPEED_KEY, config.tamedIdleSpeed(), "harnessed, no passengers"))
@@ -54,7 +54,7 @@ public final class ModCommands {
     }
 
     private static int sendConfig(CommandSourceStack source) {
-        ModConfig config = FasterHappyGhast.getConfig();
+        ModConfig config = FastOrSlowHappyGhast.getConfig();
         source.sendSuccess(() -> header()
                 .append(speedLine(ModConfig.TAMED_IDLE_SPEED_KEY, config.tamedIdleSpeed(), "harnessed, no passengers"))
                 .append(speedLine(ModConfig.RIDDEN_SPEED_KEY, config.riddenSpeed(), "harnessed with passengers")), false);
@@ -62,7 +62,7 @@ public final class ModCommands {
     }
 
     private static int reloadConfig(CommandSourceStack source) {
-        ModConfig config = FasterHappyGhast.reloadConfig();
+        ModConfig config = FastOrSlowHappyGhast.reloadConfig();
         source.sendSuccess(() -> prefix()
                 .append(Component.literal("Config reloaded. ").withStyle(ChatFormatting.GREEN))
                 .append(Component.literal(ModConfig.TAMED_IDLE_SPEED_KEY + "=" + formatSpeed(config.tamedIdleSpeed()))
@@ -74,13 +74,13 @@ public final class ModCommands {
     }
 
     private static int setTamedIdleSpeed(CommandSourceStack source, double speed) {
-        ModConfig config = FasterHappyGhast.updateConfig(FasterHappyGhast.getConfig().withTamedIdleSpeed(speed));
+        ModConfig config = FastOrSlowHappyGhast.updateConfig(FastOrSlowHappyGhast.getConfig().withTamedIdleSpeed(speed));
         source.sendSuccess(() -> setMessage(ModConfig.TAMED_IDLE_SPEED_KEY, config.tamedIdleSpeed()), true);
         return 1;
     }
 
     private static int setRiddenSpeed(CommandSourceStack source, double speed) {
-        ModConfig config = FasterHappyGhast.updateConfig(FasterHappyGhast.getConfig().withRiddenSpeed(speed));
+        ModConfig config = FastOrSlowHappyGhast.updateConfig(FastOrSlowHappyGhast.getConfig().withRiddenSpeed(speed));
         source.sendSuccess(() -> setMessage(ModConfig.RIDDEN_SPEED_KEY, config.riddenSpeed()), true);
         return 1;
     }
@@ -90,7 +90,7 @@ public final class ModCommands {
     }
 
     private static MutableComponent prefix() {
-        return Component.literal("[FasterHappyGhast] ").withStyle(ChatFormatting.GOLD);
+        return Component.literal("[FastOrSlowHappyGhast] ").withStyle(ChatFormatting.GOLD);
     }
 
     private static MutableComponent speedLine(String key, double speed, String description) {

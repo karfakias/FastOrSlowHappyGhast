@@ -2,20 +2,21 @@
   "schemaVersion": 1,
   "id": "fasterhappyghast",
   "version": "${version}",
-  "name": "Faster Happy Ghast",
-  "description": "Makes tamed Happy Ghast speed configurable for idle and ridden states.",
+  "name": "Fast or Slow Happy Ghast",
+  "description": "Configurable flying speed for harnessed Happy Ghasts.",
   "authors": [
-    "DerexXD"
+    "karfakias"
   ],
   "contact": {
-    "homepage": "https://derec4.github.io/derexsmp/",
-    "issues": "https://github.com/Derec-Mods/FasterHappyGhast/issues"
+    "homepage": "https://github.com/karfakias/FastOrSlowHappyGhast",
+    "issues": "https://github.com/karfakias/FastOrSlowHappyGhast/issues",
+    "sources": "https://github.com/karfakias/FastOrSlowHappyGhast"
   },
   "license": "MIT",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.derec4.fasterhappyghast.FasterHappyGhast"
+      "io.github.karfakias.fasterhappyghast.FastOrSlowHappyGhast"
     ]
   },
   "mixins": [

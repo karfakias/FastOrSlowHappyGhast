@@ -1,4 +1,4 @@
-package io.github.derec4.fasterhappyghast;
+package io.github.karfakias.fasterhappyghast;
 
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -24,7 +24,7 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
             try (Reader reader = Files.newBufferedReader(configPath)) {
                 properties.load(reader);
             } catch (IOException exception) {
-                FasterHappyGhast.LOGGER.warn("Could not read {}, using defaults.", configPath, exception);
+                FastOrSlowHappyGhast.LOGGER.warn("Could not read {}, using defaults.", configPath, exception);
             }
         }
 
@@ -55,10 +55,10 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
         try {
             Files.createDirectories(configPath.getParent());
             try (Writer writer = Files.newBufferedWriter(configPath)) {
-                properties.store(writer, "Faster Happy Ghast config. Untamed Happy Ghasts keep the vanilla speed.");
+                properties.store(writer, "Fast or Slow Happy Ghast config. Untamed Happy Ghasts keep the vanilla speed.");
             }
         } catch (IOException exception) {
-            FasterHappyGhast.LOGGER.warn("Could not write {}.", configPath, exception);
+            FastOrSlowHappyGhast.LOGGER.warn("Could not write {}.", configPath, exception);
         }
     }
 
@@ -71,7 +71,7 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
         try {
             return Double.parseDouble(value.trim());
         } catch (NumberFormatException exception) {
-            FasterHappyGhast.LOGGER.warn("Invalid value '{}' for '{}', using {}.", value, key, fallback);
+            FastOrSlowHappyGhast.LOGGER.warn("Invalid value '{}' for '{}', using {}.", value, key, fallback);
             return fallback;
         }
     }
