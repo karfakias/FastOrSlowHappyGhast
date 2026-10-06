@@ -16,14 +16,29 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
     public static final String TAMED_IDLE_SPEED_KEY = "tamed-idle-speed";
     public static final String RIDDEN_SPEED_KEY = "ridden-speed";
 
+    public ModConfig {
+        validateSpeed(tamedIdleSpeed);
+        validateSpeed(riddenSpeed);
+    }
+
+    private static void validateSpeed(double speed) {
+        if (!Double.isFinite(speed) || speed < 0.0D) {
+            throw new IllegalArgumentException("Speed must be finite and non-negative.");
+        }
+    }
+
     public static ModConfig load() {
-        Path configPath = getConfigPath();
+        return load(getConfigPath());
+    }
+
+    static ModConfig load(Path configPath) {
         Properties properties = new Properties();
 
         if (Files.exists(configPath)) {
             try (Reader reader = Files.newBufferedReader(configPath)) {
                 properties.load(reader);
-            } catch (IOException exception) {
+            } catch (IOException | IllegalArgumentException exception) {
+                properties.clear();
                 FastOrSlowHappyGhast.LOGGER.warn("Could not read {}, using defaults.", configPath, exception);
             }
         }
@@ -33,7 +48,7 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
                 readDouble(properties, RIDDEN_SPEED_KEY, DEFAULT_RIDDEN_SPEED)
         );
 
-        config.save();
+        config.save(configPath);
 
         return config;
     }
@@ -47,7 +62,10 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
     }
 
     public void save() {
-        Path configPath = getConfigPath();
+        save(getConfigPath());
+    }
+
+    void save(Path configPath) {
         Properties properties = new Properties();
         properties.setProperty(TAMED_IDLE_SPEED_KEY, Double.toString(tamedIdleSpeed));
         properties.setProperty(RIDDEN_SPEED_KEY, Double.toString(riddenSpeed));
@@ -69,8 +87,10 @@ public record ModConfig(double tamedIdleSpeed, double riddenSpeed) {
         }
 
         try {
-            return Double.parseDouble(value.trim());
-        } catch (NumberFormatException exception) {
+            double speed = Double.parseDouble(value.trim());
+            validateSpeed(speed);
+            return speed;
+        } catch (IllegalArgumentException exception) {
             FastOrSlowHappyGhast.LOGGER.warn("Invalid value '{}' for '{}', using {}.", value, key, fallback);
             return fallback;
         }
